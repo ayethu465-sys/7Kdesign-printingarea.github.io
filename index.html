@@ -132,6 +132,43 @@
             .print-sub-grid { grid-template-columns: 1fr; }
             .social-tiles { grid-template-columns: 1fr; }
         }
+
+/* --- Gallery Section --- */
+        .gallery { padding: 80px 8%; background: rgba(255, 255, 255, 0.02); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .gallery-item {
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            position: relative;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1) rotate(2deg);
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            opacity: 0;
+            transition: 0.3s;
+            text-align: left;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span { color: var(--accent); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -139,7 +176,11 @@
     <header class="nav">
         <div class="logo"><img src="img/logo.jpg" alt="7K Logo"><span>7K</span></div>
         <nav class="menu">
-            <a href="#">HOME</a><a href="#about">ABOUT</a><a href="#services">SERVICES</a><a href="#contact">CONTACT</a>
+            	<a href="#">HOME</a>
+	<a href="#about">ABOUT</a>
+	<a href="#services">SERVICES</a>
+	<a href="#gallery">GALLERY</a>
+	<a href="#contact">CONTACT</a>
         </nav>
     </header>
 
@@ -250,6 +291,37 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+    <!-- GALLERY SECTION -->
+
+<section id="gallery" class="gallery">
+        <h2 class="section-title">Our Work Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="img/work1.jpg" alt="7K Portfolio">
+                <div class="gallery-overlay"><span>Vinyl Printing</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/work2.jpg" alt="7K Portfolio">
+                <div class="gallery-overlay"><span>Sticker Die-cut</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/work3.jpg" alt="7K Portfolio">
+                <div class="gallery-overlay"><span>T-Shirt Screen</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/work4.jpg" alt="7K Portfolio">
+                <div class="gallery-overlay"><span>Corporate Gift</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/work5.jpg" alt="7K Portfolio">
+                <div class="gallery-overlay"><span>Packaging Design</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/work6.jpg" alt="7K Portfolio">
+                <div class="gallery-overlay"><span>Branding</span></div>
+            </div>
         </div>
     </section>
 
