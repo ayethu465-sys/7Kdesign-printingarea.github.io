@@ -169,19 +169,69 @@
         }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
         .gallery-overlay span { color: var(--accent); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+
+/* --- Burger Menu Styles --- */
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--accent);
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                padding-top: 50px;
+            }
+            .menu a {
+                margin: 20px 0;
+                font-size: 1.2rem;
+            }
+            .burger {
+                display: flex;
+            }
+            /* Menu ပွင့်လာရင် သုံးဖို့ */
+            .nav-active {
+                transform: translateX(0%);
+            }
+            /* Burger ကို X ပုံစံပြောင်းဖို့ */
+            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+        }
     </style>
 </head>
 <body>
 
-    <header class="nav">
+<header class="nav">
         <div class="logo"><img src="img/logo.jpg" alt="7K Logo"><span>7K</span></div>
         <nav class="menu">
-            	<a href="#">HOME</a>
-	<a href="#about">ABOUT</a>
-	<a href="#services">SERVICES</a>
-	<a href="#gallery">GALLERY</a>
-	<a href="#contact">CONTACT</a>
+            <a href="#">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#services">SERVICES</a>
+            <a href="#gallery">GALLERY</a> <a href="#contact">CONTACT</a>
         </nav>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </header>
 
     <section class="hero">
@@ -344,6 +394,27 @@
     </section>
 
     <footer>© 2026 7K DESIGN & PRINTING AREA. ALL RIGHTS RESERVED.</footer>
+<script>
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.menu');
+        const navLinks = document.querySelectorAll('.menu a');
+
+        burger.addEventListener('click', () => {
+            // Menu ဖွင့်/ပိတ်
+            nav.classList.toggle('nav-active');
+            
+            // Burger Animation
+            burger.classList.toggle('toggle');
+        });
+
+        // Menu link တစ်ခုခုကို နှိပ်လိုက်ရင် menu ပြန်ပိတ်သွားအောင်
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.toggle('nav-active');
+                burger.classList.toggle('toggle');
+            });
+        });
+    </script>
 
 </body>
 </html>
